@@ -19,3 +19,14 @@ m <- as.matrix(germany_iot[1:nNodes-1,2:nNodes])
 g <- graph_from_adjacency_matrix(m, mode="directed", weighted=TRUE)
 
 
+# calculate some centrality measures for the graph obtained from the
+# sample germany_1995 iot.
+Betweenness <- betweenness(g)
+Closeness <- closeness(g)
+Eigen <- evcent(g)$vector
+Degree <- degree(g)
+
+centralities <- cbind(Betweenness, Closeness, Eigen, Degree)
+
+print("================== CENTRALITY MEASURE==================")
+print(centralities)
